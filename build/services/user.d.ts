@@ -1,3 +1,4 @@
+import JWT from 'jsonwebtoken';
 export interface CreateUserPayload {
     firstName: string;
     lastName?: string;
@@ -21,6 +22,16 @@ declare class UserService {
         profileImagesURL: string | null;
         salt: string;
     }>;
+    static decodeJwt(token: any): string | JWT.JwtPayload;
+    static getUserById(id: string): import("@prisma/client").Prisma.Prisma__UserClient<{
+        email: string;
+        password: string;
+        id: string;
+        firstName: string;
+        lastName: string | null;
+        profileImagesURL: string | null;
+        salt: string;
+    } | null, null, import("@prisma/client/runtime/library").DefaultArgs, import("@prisma/client").Prisma.PrismaClientOptions>;
 }
 export default UserService;
 //# sourceMappingURL=user.d.ts.map
